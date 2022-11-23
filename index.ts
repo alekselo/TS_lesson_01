@@ -4,7 +4,7 @@ const car: {
   country: string;
   price: number;
   color: string;
-  rating: (string | number)[][];
+  rating: [string, number][];
 } = {
   brand: 'BMW',
   model: 'xDrive30e',
@@ -23,14 +23,20 @@ const car: {
   ],
 };
 
-const totalVerdict = (car: any) => {
-  const sumRating = car.rating.reduce((acc: any, item: (string | number)[][]) => {
+
+
+const totalVerdict = ({rating}: {
+  rating: [string, number][]
+}): number => {
+  const sumRating = rating.reduce((acc, item) => {
     console.log(acc, item);
 
     return item[1] + acc;
   }, 0);
-  const verdict = sumRating / car.rating.length;
+  const verdict = sumRating / rating.length;
+  console.log(verdict);
   return verdict;
+
 };
 
 const carResult = totalVerdict(car);

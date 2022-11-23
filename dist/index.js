@@ -16,13 +16,14 @@ const car = {
         ['wildcard', 8.5],
     ],
 };
-const totalVerdict = (car) => {
-    const sumRating = car.rating.reduce((acc, item) => {
+const totalVerdict = ({ rating }) => {
+    const sumRating = rating.reduce((acc, item) => {
         console.log(acc, item);
         return item[1] + acc;
     }, 0);
-    const verdict = sumRating / car.rating.length;
+    const verdict = sumRating / rating.length;
+    console.log(verdict);
     return verdict;
 };
 const carResult = totalVerdict(car);
-console.log(carResult);
+
